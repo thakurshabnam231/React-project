@@ -1,0 +1,20 @@
+.list {
+    margin: 2rem auto;
+    width: 50%;
+    max-width: 40rem;
+    background-color:rgb(172, 142, 148);
+   
+    
+  }
+  
+  .list ul {
+    list-style: none;
+    padding: 1rem;
+  }
+  
+  .list li {
+    border: 1px solid rgb(110, 16, 16);
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    
+  }
