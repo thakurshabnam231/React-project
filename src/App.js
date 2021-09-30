@@ -1,4 +1,4 @@
-import React, { useState } from 'react;'
+import React, { useState } from 'react';
 import UserForm from './Components/Users/UserForm';
 import UserList from './Components/Users/UserList';
 
@@ -13,7 +13,7 @@ function App() {
   return (
     <div>
       <UserForm onAddForm={addForm} />
-      <UserList users={users} />
+      <UserList users={userData} />
     </div>
   );
 }
