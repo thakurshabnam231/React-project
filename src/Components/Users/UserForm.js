@@ -23,12 +23,16 @@ const UserForm = (props) => {
             setError({
                 title:'invalid input',
                 message:'please enter valid name and age(non empty values)',
-            })}
+            })
+        return;
+    }
         if (+age < 1) {
             setError({
                 title:'invalid age',
                 message:'please enter valid age(>0)',
-            })}
+            })
+            return;
+        }
         const data = {
             name: name,
             age: age,
@@ -39,9 +43,12 @@ const UserForm = (props) => {
         setEventAge('');  
 
     }
+const errorHandler=()=>{
+    setError(null);
+}
     return (
         <div>
-         {error && <ErrorModal title= {error.title} message={error.message} />}
+         {error && <ErrorModal title= {error.title} message={error.message} onConfirm={errorHandler} />}
             <Card className={classes.input}>
                 <form onSubmit={onFormSubmit}>
                     <label>username</label>
