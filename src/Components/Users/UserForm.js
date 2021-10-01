@@ -7,39 +7,28 @@ import ErrorModal from '../UI/ErrorModal';
 const UserForm = (props) => {
     const [name, setEventName] = useState("");
     const [age, setEventAge] = useState("");
-    const [error, setError] = useState();
+    const [error, setError] = useState({});
 
 
     const eventName = (event) => {
         setEventName(event.target.value);
-
     }
-
     const eventAge = (event) => {
         setEventAge(event.target.value);
     }
-    
-    const onClickHandler=()=>{
-        setError(null);
-    }
+ 
     const onFormSubmit = (event) => {
-
         event.preventDefault();
-        if (name.trim().length === 0 || age.trim().length === 0) {
+        if (name.length === 0 || age.length === 0) {
             setError({
                 title:'invalid input',
                 message:'please enter valid name and age(non empty values)',
-            })
-            return;
-        }
-        if (age < 1) {
+            })}
+        if (+age < 1) {
             setError({
                 title:'invalid age',
                 message:'please enter valid age(>0)',
-            })
-            return;
-        }
-       
+            })}
         const data = {
             name: name,
             age: age,
@@ -47,11 +36,12 @@ const UserForm = (props) => {
         }
         props.onAddForm(data);
         setEventName('');
-        setEventAge('');
+        setEventAge('');  
+
     }
     return (
         <div>
-         {error &&   <ErrorModal title= {error.title} message={error.message}  onConfirm={error.onClickHandler}/>}
+         {error && <ErrorModal title= {error.title} message={error.message} />}
             <Card className={classes.input}>
                 <form onSubmit={onFormSubmit}>
                     <label>username</label>
@@ -59,12 +49,10 @@ const UserForm = (props) => {
                     <br />
                     <label>age</label>
                     <input type="number" id="age" value={age} onChange={eventAge} /><br />
-
                     <Button> Add user</Button>
                 </form>
             </Card>
         </div>
-    )
-}
+    )}
 
 export default UserForm
