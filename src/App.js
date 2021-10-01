@@ -5,9 +5,9 @@ import UserList from './Components/Users/UserList';
 function App() {
   const [userData, setUserData] = useState([])
 
-  const addForm = (userName,userAge) => {
+  const addForm = (data) => {
     setUserData((prev) => {
-      return [...prev, {name:userName, age:userAge}]
+      return [...prev, data]
     })
   }
   return (
